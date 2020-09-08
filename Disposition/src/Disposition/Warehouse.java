@@ -16,10 +16,10 @@ public class Warehouse {
     //Processes, retrieves and returns one item from the warehouse
     public int retrieve() throws InterruptedException, NoMoreWorkException {
         int noItems = products.size();
-        if(noItems == 0) {
+        if (noItems == 0) {
             wait();
         }
-        if(noItems > 0) {
+        if (noItems > 0) {
             processItem();
             return products.remove(noItems - 1);
         } else throw new NoMoreWorkException();

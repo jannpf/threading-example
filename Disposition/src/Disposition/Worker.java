@@ -10,14 +10,18 @@ public class Worker extends Thread {
 
     @Override
     public void run() {
-        while(true) {
+        while (true) {
             try {
+                //Begin synchronized context
+                //Conflicts arise if removed
                 synchronized (target) {
                     try {
                         currentItem = target.retrieve();
                     } catch (InterruptedException e) {
+                        //Thread aborted
                         break;
                     } catch (NoMoreWorkException e) {
+                        //Restart
                         continue;
                     }
                 }
